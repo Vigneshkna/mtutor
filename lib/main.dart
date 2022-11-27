@@ -19,9 +19,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobiletutor/learn/learn.dart';
+import 'package:mobiletutor/profile/view/profile_page.dart';
 
+
+import 'attendance/view/attendance_page.dart';
+import 'package:mobiletutor/learn/learn.dart';
 import 'questionbank/view/qb_page.dart';
+import 'report/view/reports_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: QbPage(),
+      home: ReportsPage(),//QbPage(),
     );
   }
 }

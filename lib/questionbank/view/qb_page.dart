@@ -1,10 +1,12 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
+import 'package:http/http.dart' as http;
+
+import 'pdf_viewer.dart';
 
 
 class QbPage extends StatefulWidget {
@@ -17,32 +19,34 @@ class QbPage extends StatefulWidget {
 }
 
 class _QbPageState extends State<QbPage> {
-  // Future<String> downloadFile(String url, String fileName, String dir) async {
-  Future<String> downloadFile(String fileName, String dir) async {
-    HttpClient httpClient = HttpClient();
-    File file;
-    String filePath = '';
-    String myUrl = 'http://englishonlineclub.com/pdf/iOS%20Programming%20-%20The%20Big%20Nerd%20Ranch%20Guide%20(6th%20Edition)%20[EnglishOnlineClub.com].pdf';
 
-    try {
-     // myUrl = url;
-      var request = await httpClient.getUrl(Uri.parse(myUrl));
-      var response = await request.close();
-      if(response.statusCode == 200) {
-        var bytes = await consolidateHttpClientResponseBytes(response);
-        filePath = '$dir/$fileName';
-        file = File(filePath);
-        await file.writeAsBytes(bytes);
-      }
-      else
-        filePath = 'Error code: '+response.statusCode.toString();
-    }
-    catch(ex){
-      filePath = 'Can not fetch url';
-    }
-
-    return filePath;
+  Future<File> loadPdfFromNetwork(String url) async {
+    final response = await http.get(Uri.parse(url));
+    final bytes = response.bodyBytes;
+    return _storeFile(url, bytes);
   }
+
+  Future<File> _storeFile(String url, List<int> bytes) async {
+    final filename = basename(url);
+    final dir = await getApplicationDocumentsDirectory();
+    final file = File('${dir.path}/$filename');
+    await file.writeAsBytes(bytes, flush: true);
+    if (kDebugMode) {
+      print('$file');
+    }
+    return file;
+  }
+
+  void openPdf(BuildContext context, File file, String url, String filename) =>
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => PdfViewerPage(
+            file: file,
+            url: url,
+            filename: filename,
+          ),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -62,18 +66,20 @@ class _QbPageState extends State<QbPage> {
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Colors.orangeAccent[200],
-                    child: Text("QB ${index+1}"),
+                    child: Text("QB${index+1}"),
                   ),
                   title: Text("QB ${index+1} Title"),
                   subtitle: Text("QB ${index+1} Subtitle"),
                   trailing: IconButton(
                     icon: Icon(
-                      Icons.download_outlined,
+                      Icons.download,
                       size: 20.0,
                       color: Colors.brown[900],
                     ),
-                    onPressed: () {
-                      downloadFile("Local","QB ${index+1}");
+                    onPressed: () async {
+                      const url = "http://www.africau.edu/images/default/sample.pdf";
+                      final file = await loadPdfFromNetwork(url);
+                      openPdf(context, file, url, "QB ${index+1}");
                     },
                   ),
                 ),

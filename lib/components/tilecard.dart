@@ -12,9 +12,7 @@ class TileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: (){
-      print(title);
-    },
+        onTap: (){ },
     child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),

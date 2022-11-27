@@ -42,7 +42,12 @@ dependencies:
   http:
 
   youtube_player_flutter:
-  flutter_downloader:
+  flutter_pdfview:
+  dio:
+  path:
+  path_provider:
+  permission_handler:
+  charts_flutter:
 
 dev_dependencies:
   flutter_test:
