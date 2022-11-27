@@ -1,16 +1,44 @@
-# mobiletutor
+# M-Tutor Flutter Application
 
-A Mobile Tutor Flutter project.
+## Dependancies
 
-## Getting Started
+This app is currently extended with the following dev dependancies.
+Instructions on how to use them in your own application are linked below.
 
-This project is a starting point for a Flutter application.
+```sh
+  https://pub.dev/packages/
+```
 
-A few resources to get you started if this is your first Flutter project:
+| Depandancy | 
+| ------ | 
+| flutter_bloc | 
+| equatable |
+| get_storage | 
+| http | 
+| youtube_player_flutter | 
+| flutter_pdfview | 
+| dio | 
+| path | 
+| path_provider | 
+| permission_handler | 
+| charts_flutter | 
+| flutter_neumorphic | 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## SnapShots
+![Home Dashboard](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Home_Dashboard.jpg)
+![Student Dashboard](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Student_Dashboard.jpg)
+![Teacher Dashboard](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Teacher_Dashboard.jpg)
+![Learn Dashboard](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Learning_Dashboard.jpg)
+![Question Bank](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/QuestionBank.jpg)
+![PDF Download](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Download_PDF.jpg)
+![Attendance Dashboard](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Attendance.jpg)
+![Report Dashboard](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Report_Dashboard.jpg)
+![Profile](https://github.com/Vigneshkna/mtutor/blob/master/snapShots/Profile.jpg)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## APK
+[M-Tutor Flutter apk](https://github.com/Vigneshkna/mtutor/blob/master/Apk/M-Tutor-dbg.apk)
+
+## License
+
+MIT
+
