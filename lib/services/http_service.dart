@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-
 class HttpService<T> {
   final String? url;
   final dynamic body;
@@ -41,7 +40,7 @@ class APIWeb {
     final uri = Uri.parse(resource.url!);
     print("url :${uri.toString()}");
     final response =
-    await http.post(uri, body: jsonEncode(resource.body), headers: headers);
+        await http.post(uri, body: jsonEncode(resource.body), headers: headers);
     print("status code :${response.statusCode}");
     if (response.statusCode == 200) {
       var responseJson = json.decode(response.body);
@@ -58,7 +57,7 @@ class APIWeb {
     final uri = Uri.parse(resource.url!);
     print("url :${uri.toString()}");
     final response =
-    await http.put(uri, body: jsonEncode(resource.body), headers: headers);
+        await http.put(uri, body: jsonEncode(resource.body), headers: headers);
     print("status code :${response.statusCode}");
     if (response.statusCode == 200) {
       var responseJson = json.decode(response.body);

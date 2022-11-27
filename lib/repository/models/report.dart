@@ -6,7 +6,8 @@ class ReportModel {
   final charts.Color color;
 
   ReportModel({
-    required this.assesment, required this.score,
-    required this.color,}
-      );
+    required this.assesment,
+    required this.score,
+    required this.color,
+  });
 }

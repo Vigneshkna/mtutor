@@ -1,19 +1,17 @@
 part of 'home_bloc.dart';
 
 class HomeState extends Equatable {
-  const HomeState._({
-    this.view = HomeView.def
-  });
+  const HomeState._({this.view = HomeView.def});
 
   const HomeState.def() : this._();
-  const HomeState.student()
-      : this._(view: HomeView.student);
-  const HomeState.teacher()
-      : this._(view: HomeView.teacher);
-  const HomeState.admin()
-      : this._(view: HomeView.admin);
-  const HomeState.reports()
-      : this._(view: HomeView.reports);
+
+  const HomeState.Student() : this._(view: HomeView.Student);
+
+  const HomeState.Teacher() : this._(view: HomeView.Teacher);
+
+  const HomeState.Admin() : this._(view: HomeView.Admin);
+
+  const HomeState.Reports() : this._(view: HomeView.Reports);
 
   final HomeView view;
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../components/tilecard.dart';
+import '../../constant/constant.dart';
 import '../../repository/admin_repo.dart';
 import '../bloc/admin_bloc.dart';
 
@@ -18,26 +19,25 @@ class AdminPage extends StatelessWidget {
 
     final dashboard = BlocBuilder<AdminBloc, AdminState>(
       builder: (context, state) {
-        if (state.view.name == 'def') {
           return GridView.count(
+            shrinkWrap: true,
             crossAxisCount: 2,
             crossAxisSpacing: 5,
             mainAxisSpacing: 5,
             padding: const EdgeInsets.all(10.0),
             children: List.generate(
-              AdminView.values.length,
+              AdminView.values.length-1,
                   (index) => TileCard(title:AdminView.values[index+1].name,
+                    navRoute: AdminView.values[index+1].name,
               ),
             ),
           );
-        } else {
-          return Container();
-        }
       },
     );
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Admin Dashboard')),
+      backgroundColor: primarycolor_light,
+      appBar: AppBar(title: const Text('Admin Dashboard'),backgroundColor: secondarycolor_light,),
       body: BlocListener<AdminBloc, AdminState>(
           listener: (context, state) {
             // if(state.status == 'Success'){

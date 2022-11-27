@@ -1,19 +1,17 @@
 part of 'student_bloc.dart';
 
 class StudentState extends Equatable {
-  const StudentState._({
-    this.view = StudentView.def
-  });
+  const StudentState._({this.view = StudentView.def});
 
   const StudentState.def() : this._();
-  const StudentState.profile()
-      : this._(view: StudentView.profile);
-  const StudentState.learner()
-      : this._(view: StudentView.learner);
-  const StudentState.qb()
-      : this._(view: StudentView.qb);
-  const StudentState.assets()
-      : this._(view: StudentView.assets);
+
+  const StudentState.Profile() : this._(view: StudentView.Profile);
+
+  const StudentState.Learner() : this._(view: StudentView.Learner);
+
+  const StudentState.QuestionBank() : this._(view: StudentView.QuestionBank);
+
+  const StudentState.Assets() : this._(view: StudentView.Assets);
 
   final StudentView view;
 

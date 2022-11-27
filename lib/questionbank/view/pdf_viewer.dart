@@ -8,6 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../constant/constant.dart';
+
 class PdfViewerPage extends StatefulWidget {
   final File file;
   final String url;
@@ -29,8 +31,10 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   Widget build(BuildContext context) {
     final name = basename(widget.file.path);
     return Scaffold(
+      backgroundColor: primarycolor_light,
       appBar: AppBar(
         title: Text(name),
+        backgroundColor: secondarycolor_light,
         actions: [
           IconButton(
             onPressed: () async {
@@ -38,7 +42,7 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
-                    'successfully saved !!',
+                    'Successfully saved !!',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

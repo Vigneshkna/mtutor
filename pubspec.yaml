@@ -48,6 +48,7 @@ dependencies:
   path_provider:
   permission_handler:
   charts_flutter:
+  flutter_neumorphic:
 
 dev_dependencies:
   flutter_test:

@@ -1,27 +1,27 @@
 import 'dart:async';
 
-enum TeacherView { def, profile, attendance, syllabus, assets }
+enum TeacherView { def, Profile, Attendance, Syllabus, Assets }
 
 class TeacherRepository {
   final _controller = StreamController<TeacherView>();
 
   Stream<TeacherView> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
-    yield TeacherView.profile;
+    yield TeacherView.Profile;
     yield* _controller.stream;
   }
 
-  void profileOn() {
-    _controller.add(TeacherView.profile);
+  void ProfileOn() {
+    _controller.add(TeacherView.Profile);
   }
   void attendanceOn() {
-    _controller.add(TeacherView.attendance);
+    _controller.add(TeacherView.Attendance);
   }
   void syllabusOn() {
-    _controller.add(TeacherView.syllabus);
+    _controller.add(TeacherView.Syllabus);
   }
-  void assetsOn() {
-    _controller.add(TeacherView.assets);
+  void AssetsOn() {
+    _controller.add(TeacherView.Assets);
   }
 
   void dispose() => _controller.close();

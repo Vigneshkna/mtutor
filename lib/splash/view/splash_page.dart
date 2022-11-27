@@ -13,11 +13,13 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: primarycolor_light,
-      body: Center(child:  Icon(
-        Icons.assistant_navigation,
-        size: 70,
-        color: Colors.white,
-      ),),
+      body: Center(
+        child: Icon(
+          Icons.assistant_navigation,
+          size: 70,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../components/tilecard.dart';
+import '../../constant/constant.dart';
 import '../../repository/student_repo.dart';
-import '../bloc/student_bloc.dart';
-
 
 class StudentPage extends StatelessWidget {
   const StudentPage({super.key});
@@ -15,11 +13,13 @@ class StudentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-   return Scaffold(
-  backgroundColor: Colors.orangeAccent[50],
-  appBar: AppBar(title: const Text('Student Dashboard')),
-  body:  Center(
+    return Scaffold(
+      backgroundColor: primarycolor_light,
+      appBar: AppBar(
+        title: const Text('Student Dashboard'),
+        backgroundColor: secondarycolor_light,
+      ),
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.all(18),
           child: Align(
@@ -31,24 +31,20 @@ class StudentPage extends StatelessWidget {
                 const Padding(padding: EdgeInsets.all(12)),
                 Builder(
                   builder: (context) {
-                    final view = context.select(
-                          (StudentBloc bloc) => bloc.state.view.name,
-                    );
-                    if (view == 'def') {
-                      return GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 5,
-                        mainAxisSpacing: 5,
-                        padding: const EdgeInsets.all(10.0),
-                        children: List.generate(
-                          StudentView.values.length,
-                              (index) => TileCard(title:StudentView.values[index+1].name,
-                          ),
+                    return GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                      padding: const EdgeInsets.all(10.0),
+                      children: List.generate(
+                        StudentView.values.length - 1,
+                        (index) => TileCard(
+                          title: StudentView.values[index + 1].name,
+                          navRoute: StudentView.values[index + 1].name,
                         ),
-                      );
-                    } else {
-                      return Container();
-                    }
+                      ),
+                    );
                   },
                 ),
                 const Padding(padding: EdgeInsets.all(12)),
@@ -57,7 +53,6 @@ class StudentPage extends StatelessWidget {
           ),
         ),
       ),
-
-);
+    );
   }
 }

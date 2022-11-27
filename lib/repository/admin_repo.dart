@@ -1,27 +1,30 @@
 import 'dart:async';
 
-enum AdminView { def, profile, settings, reports, assets }
+enum AdminView { def, Profile, Settings, Reports, Assets }
 
 class AdminRepository {
   final _controller = StreamController<AdminView>();
 
   Stream<AdminView> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
-    yield AdminView.profile;
+    yield AdminView.Profile;
     yield* _controller.stream;
   }
 
-  void profileOn() {
-    _controller.add(AdminView.profile);
+  void ProfileOn() {
+    _controller.add(AdminView.Profile);
   }
-  void settingsOn() {
-    _controller.add(AdminView.settings);
+
+  void SettingsOn() {
+    _controller.add(AdminView.Settings);
   }
-  void reportsOn() {
-    _controller.add(AdminView.reports);
+
+  void ReportsOn() {
+    _controller.add(AdminView.Reports);
   }
-  void assetsOn() {
-    _controller.add(AdminView.assets);
+
+  void AssetsOn() {
+    _controller.add(AdminView.Assets);
   }
 
   void dispose() => _controller.close();

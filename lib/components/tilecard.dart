@@ -1,47 +1,34 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TileCard extends StatelessWidget {
   final String title;
+  final String navRoute;
 
   const TileCard({
     Key? key,
     required this.title,
+    required this.navRoute,
   })  : assert(title != ''),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: (){ },
-    child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: const Offset(0, 3),
+      onTap: () {
+        Navigator.pushNamed(context, '/$navRoute');
+      },
+      child: Neumorphic(
+        style: const NeumorphicStyle(
+          color: Color(0xffb2ebf2),
+          border: NeumorphicBorder(
+            color: Color(0xffb2ebf2),
+            width: 0.8,
           ),
-        ],
+        ),
+        child: Center(
+          child: Text(title),
+        ),
       ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            child: const Icon(Icons.ac_unit, size: 24, color:Colors.blueAccent),
-          ),
-          Container(
-            decoration: const BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(12), bottomLeft: Radius.circular(12))
-            ),
-            padding: const EdgeInsets.all(12),
-            child: Text(title),
-          )
-        ],
-      ),
-    ));
+    );
   }
 }
